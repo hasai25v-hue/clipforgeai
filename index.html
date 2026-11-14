@@ -1,1 +1,191 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLIPFORGE AI</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #090d18;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+      border-bottom: 1px solid #252b3d;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #8b7cff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 85px 20px 45px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: #8b7cff;
+    }
+
+    .hero p {
+      color: #aab1c5;
+      max-width: 550px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 30px;
+      background: #151b2c;
+      border: 1px solid #303951;
+      border-radius: 16px;
+    }
+
+    label {
+      display: block;
+      margin: 18px 0 10px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 15px;
+      border-radius: 9px;
+      border: 1px solid #39425c;
+      background: #0c1221;
+      color: white;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      margin-top: 25px;
+      background: #7965ff;
+      border: none;
+      border-radius: 9px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6049e9;
+    }
+
+    #result {
+      margin-top: 20px;
+      color: #b9b2ff;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      color: #737d96;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">CLIPFORGE AI</div>
+    <div>AI VIDEO TOOLS</div>
+  </header>
+
+  <section class="hero">
+    <h1>Turn Videos Into <span>Viral Clips</span></h1>
+    <p>
+      Ubah video panjang menjadi ide konten pendek
+      yang siap dikembangkan menjadi klip menarik.
+    </p>
+  </section>
+
+  <div class="container">
+    <h2>AI Clip Generator</h2>
+
+    <label>Masukkan URL Video</label>
+    <input
+      type="url"
+      id="videoURL"
+      placeholder="https://youtube.com/..."
+    >
+
+    <label>Pilih Platform</label>
+    <select id="platform">
+      <option value="TikTok">TikTok</option>
+      <option value="YouTube Shorts">YouTube Shorts</option>
+      <option value="Instagram Reels">Instagram Reels</option>
+    </select>
+
+    <label>Jumlah Klip</label>
+    <select id="jumlah">
+      <option value="3">3 Klip</option>
+      <option value="5">5 Klip</option>
+      <option value="10">10 Klip</option>
+    </select>
+
+    <button onclick="generateClip()">
+      Generate Clips
+    </button>
+
+    <div id="result"></div>
+  </div>
+
+  <footer>
+    © 2026 CLIPFORGE AI — Create. Clip. Go Viral.
+  </footer>
+
+  <script>
+    function generateClip() {
+      const url = document.getElementById("videoURL").value;
+      const platform = document.getElementById("platform").value;
+      const jumlah = document.getElementById("jumlah").value;
+      const result = document.getElementById("result");
+
+      if (!url) {
+        result.innerText = "Masukkan URL video terlebih dahulu!";
+        return;
+      }
+
+      result.innerText =
+        "Permintaan diterima! Platform: " +
+        platform +
+        ". Jumlah klip: " +
+        jumlah +
+        ". Mesin AI belum dihubungkan.";
+    }
+  </script>
+
+</body>
+  </html>
+  
+
+
