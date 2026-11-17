@@ -178,11 +178,12 @@
   const jumlah = document.getElementById("jumlah").value;
   const result = document.getElementById("result");
 
-  if (!url) {
-    result.innerText = "Masukkan URL video terlebih dahulu!";
-    return;
-  }
+  const file = document.getElementById("videoFile").files[0];
 
+if (!url && !file) {
+  result.innerText = "Masukkan URL atau upload video terlebih dahulu!";
+  return;
+}
   result.innerText = "Menghubungkan ke CLIPFORGE AI...";
 
   try {
