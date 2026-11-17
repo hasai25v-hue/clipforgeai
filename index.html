@@ -164,23 +164,50 @@
   </footer>
 
   <script>
-    function generateClip() {
-      const url = document.getElementById("videoURL").value;
-      const platform = document.getElementById("platform").value;
-      const jumlah = document.getElementById("jumlah").value;
-      const result = document.getElementById("result");
+    async function generateClip() {
+  const url = document.getElementById("videoURL").value.trim();
+  const platform = document.getElementById("platform").value;
+  const jumlah = document.getElementById("jumlah").value;
+  const result = document.getElementById("result");
 
-      if (!url) {
-        result.innerText = "Masukkan URL video terlebih dahulu!";
-        return;
+  if (!url) {
+    result.innerText = "Masukkan URL video terlebih dahulu!";
+    return;
+  }
+
+  result.innerText = "Menghubungkan ke CLIPFORGE AI...";
+
+  try {
+    const response = await fetch(
+      "https://clipforgeai-ai-engine.hasai25v.workers.dev/ai-test",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          video_url: url,
+          platform: platform,
+          jumlah_klip: jumlah
+        })
       }
+    );
 
-      result.innerText =
-        "Permintaan diterima! Platform: " +
-        platform +
-        ". Jumlah klip: " +
-        jumlah +
-        ". Mesin AI belum dihubungkan.";
+    const data = await response.json();
+
+    if (!response.ok || data.status !== "success") {
+      throw new Error(data.message || "AI gagal merespons");
+    }
+
+    result.innerText =
+      "CLIPFORGE AI berhasil terhubung! 🚀\n" +
+      "Platform: " + platform + "\n" +
+      "Jumlah klip: " + jumlah + "\n\n" +
+      JSON.stringify(data.result, null, 2);
+
+  } catch (error) {
+    result.innerText = "Terjadi kesalahan: " + error.message;
+  }
     }
   </script>
 
